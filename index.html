@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock">
+        <h2>The time is now</h2>
+        <div class="time">
+            <div><span class="hour">00</span><span>Hours</span></div>
+            <div><span class="minutes">00</span><span>Minutes</span></div>
+            <div><span class="seconds">00</span><span>Seconds</span></div>
+            <div><span class="ampm">AM</span></div>
+        </div>
+    </div>
+
+    <script>
+        function clock(){
+            let hours =document.querySelector(".hour");
+            let minutes =document.querySelector(".minutes");
+            let seconds =document.querySelector(".seconds");
+            let ampm =document.querySelector(".ampm");
+
+            var h = new Date().getHours();
+            var m = new Date().getMinutes();
+            var s = new Date().getSeconds();
+            var am = "AM";
+
+            console.log(h);
+
+
+                if(h>11 && h<24){
+                    am="PM"
+                }else{
+                    am="AM"
+                }
+                
+            if(h>12 && h<=23){
+                h=h-12;
+                
+            }
+            else if(h==0){
+                h=12;
+               am="AM"
+            }
+
+            h = (h<10) ? "0" +h : h
+            m = (m<10) ? "0" +m : m
+            s = (s<10) ? "0" +s : s
+
+
+            hours.innerHTML=h;
+            minutes.innerHTML=m;
+            seconds.innerHTML=s;
+            ampm.innerHTML=am;
+}
+            
+            setInterval(clock,1000);
+    </script>
+</body>
+</html>
